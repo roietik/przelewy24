@@ -1,0 +1,546 @@
+:root {
+  --green: #37c08b;
+  --green-light: #e0fbdc;
+  --orange: #ff5100;
+  --orange-light: #fcefe8;
+  --black: #000000;
+  --gray: #545454;
+  --blue: #0093ff;
+  --footer: #f6f6f6;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  .header {
+    @include grid-row(12) {
+      &__logo {
+        @include grid-column(3);
+        @include breakpoint(640px) {
+          @include grid-column(6);
+        }
+        @include breakpoint(920px) {
+          @include grid-column(7);
+        }
+        @include breakpoint(1200px) {
+          @include grid-column(8);
+        }
+        img {
+          width: 125px;
+          margin-top: rem-calc(15);
+          margin-left: rem-calc(5);
+          @include breakpoint(920px) {
+            width: rem-calc(145);
+          }
+        }
+      }
+      &__nav {
+        margin-top: rem-calc(4);
+        @include grid-column(9);
+        @include breakpoint(640px) {
+          @include grid-column(6);
+        }
+        @include breakpoint(920px) {
+          @include grid-column(5);
+          font-size: rem-calc(20);
+        }
+        @include breakpoint(1200px) {
+          @include grid-column(4);
+        }
+
+        &--menu {
+          margin: rem-calc(7);
+          list-style-type: none;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          li {
+            &:first-child {
+              justify-self: left;
+            }
+            &:nth-child(2) {
+              justify-self: center;
+            }
+            &:nth-child(3) {
+              justify-self: right;
+              padding-right: 3px;
+            }
+            a {
+              color: var(--black);
+            }
+          }
+        }
+      }
+      &__desc {
+        font-size: rem-calc(12);
+        color: var(--gray);
+        @include grid-column(12);
+        padding: 0 rem-calc(15);
+        @include breakpoint(640px) {
+          font-size: rem-calc(18);
+        }
+        @include breakpoint(920px) {
+          font-size: rem-calc(24);
+        }
+      }
+    }
+  }
+
+  .container {
+    @include breakpoint(720px) {
+      display: block;
+    }
+    @include breakpoint(1200px) {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      max-width: rem-calc(1240);
+      margin: 0 auto;
+    }
+    .main {
+      .hero {
+        &__sub-menu {
+          display: none;
+          @include breakpoint(1200px) {
+            display: grid;
+            grid-template-columns: 180px 180px 220px 180px;
+            margin: rem-calc(15);
+            font-size: rem-calc(18px);
+            position: relative;
+            padding: rem-calc(20 15);
+
+            &:before {
+              content: "";
+              position: absolute;
+              width: 67%;
+              height: 55.5px;
+              border: 2px solid #5454541f;
+              border-radius: 8px;
+              border-top-right-radius: 0;
+              border-bottom-right-radius: 0;
+              border-right: none;
+              background: #ffff;
+              z-index: -1;
+            }
+            &:after {
+              content: "";
+              background: url("../img/58.svg");
+              position: absolute;
+              background-repeat: no-repeat;
+              left: rem-calc(514);
+              width: 100%;
+              height: rem-calc(58);
+              z-index: -5;
+            }
+            p {
+              margin-bottom: 0;
+              &:nth-child(1) {
+                font-weight: bold;
+              }
+              &:nth-child(2) {
+                font-weight: bold;
+              }
+              &:nth-child(3) {
+                font-weight: bold;
+                color: var(--orange);
+              }
+              &:nth-child(4) {
+                color: #54545459;
+              }
+            }
+          }
+        }
+        @include grid-row(12) {
+          &__notification {
+            background: var(--orange-light);
+            border-radius: 4px;
+            padding: rem-calc(10 15);
+            margin: rem-calc(0 15);
+
+            p {
+              font-size: rem-calc(12);
+              line-height: rem-calc(16);
+              color: var(--orange);
+              margin: 0;
+              @include breakpoint(640px) {
+                font-size: rem-calc(16);
+                line-height: rem-calc(20);
+              }
+              @include breakpoint(920px) {
+                font-size: rem-calc(20);
+                line-height: rem-calc(32);
+              }
+            }
+          }
+          &__title {
+            font-size: rem-calc(24);
+            font-weight: bold;
+            line-height: rem-calc(29);
+            margin: rem-calc(15);
+            @include breakpoint(640px) {
+              font-size: rem-calc(24);
+              line-height: rem-calc(36);
+            }
+            @include breakpoint(920px) {
+              font-size: rem-calc(28);
+              line-height: rem-calc(36);
+              margin-bottom: 0;
+            }
+            p {
+              margin: 0;
+            }
+          }
+        }
+      }
+
+      .payments {
+        @include accordion-container;
+        @include grid-row(12) {
+          &__item {
+            @include accordion-item;
+            a {
+              border: none !important;
+              &:hover,
+              &:focus {
+                background-color: transparent !important;
+              }
+              &:before {
+                content: none !important;
+              }
+              @include accordion-title;
+
+              div {
+                display: block;
+                margin: none;
+                padding: 0;
+                border: none !important;
+                .title {
+                  font-size: rem-calc(16);
+                  line-height: rem-calc(19);
+                  font-weight: bold;
+                  @include breakpoint(640px) {
+                    font-size: rem-calc(20);
+                    line-height: rem-calc(24);
+                  }
+                  @include breakpoint(920px) {
+                    font-size: rem-calc(24);
+                    line-height: rem-calc(29);
+                  }
+                }
+                div {
+                  @include breakpoint(920px) {
+                    display: grid;
+                    grid-template-columns: 9fr 1fr;
+                  }
+
+                  .desc {
+                    font-size: rem-calc(12);
+                    font-weight: 300;
+                    color: var(--gray);
+                    line-height: rem-calc(15);
+                    @include breakpoint(640px) {
+                      font-size: rem-calc(16);
+                      line-height: rem-calc(20);
+                    }
+                    @include breakpoint(920px) {
+                      font-size: rem-calc(20);
+                      line-height: rem-calc(24);
+                      margin-bottom: 0;
+                    }
+                  }
+                  button {
+                    font-size: rem-calc(12);
+                    font-weight: bold;
+                    border-radius: rem-calc(4);
+                    padding: rem-calc(14 11);
+                    width: 100%;
+                    @include breakpoint(640px) {
+                      font-size: rem-calc(18);
+                      line-height: rem-calc(24);
+                    }
+                    @include breakpoint(920px) {
+                      font-size: rem-calc(24);
+                      line-height: rem-calc(29);
+                    }
+                  }
+                  .blue-btn {
+                    background: var(--blue);
+                    color: #fff;
+                  }
+                  .green-btn {
+                    background: var(--green-light);
+                    color: var(--green);
+                  }
+                }
+              }
+            }
+            div {
+              @include accordion-content;
+              border: none !important;
+              padding-top: 0;
+
+              ul {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                @include breakpoint(640px) {
+                  grid-template-columns: repeat(6, 1fr);
+                }
+                column-gap: rem-calc(10);
+                row-gap: rem-calc(10);
+                list-style-type: none;
+                margin: 0;
+                @include breakpoint(640px) {
+                  max-width: rem-calc(640);
+                }
+                li {
+                  a {
+                    padding: 0;
+                    margin: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .sidebar {
+      .summary {
+        @include grid-row(12) {
+          &__data {
+            background: var(--footer);
+            margin: 0 rem-calc(15);
+            border-radius: rem-calc(4);
+            padding: rem-calc(15);
+            &--title {
+              font-size: rem-calc(16);
+              font-weight: bold;
+              @include breakpoint(640px) {
+                font-size: rem-calc(24);
+                line-height: rem-calc(36);
+              }
+              @include breakpoint(920px) {
+                font-size: 28px;
+                line-height: 36px;
+              }
+            }
+            &--price {
+              font-size: rem-calc(16) 12;
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              @include breakpoint(640px) {
+                font-size: rem-calc(16);
+                line-height: rem-calc(20);
+              }
+              @include breakpoint(920px) {
+                font-size: rem-calc(20);
+                line-height: rem-calc(24);
+              }
+              p {
+                margin: 0;
+              }
+              :nth-child(2) {
+                font-weight: bold;
+                justify-self: right;
+              }
+            }
+            &--netto {
+              font-size: rem-calc(12);
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              @include breakpoint(640px) {
+                font-size: rem-calc(16);
+                line-height: rem-calc(20);
+              }
+              @include breakpoint(920px) {
+                font-size: rem-calc(20);
+                line-height: rem-calc(24);
+              }
+              p {
+                margin: 0;
+              }
+              :nth-child(2) {
+                justify-self: right;
+              }
+            }
+            &--tax {
+              font-size: rem-calc(12);
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              @include breakpoint(640px) {
+                font-size: rem-calc(16);
+                line-height: rem-calc(20);
+              }
+              @include breakpoint(920px) {
+                font-size: rem-calc(20);
+                line-height: rem-calc(24);
+              }
+              p {
+                margin: 0;
+              }
+              :nth-child(2) {
+                justify-self: right;
+              }
+            }
+            &--sum {
+              font-size: 12px;
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              @include breakpoint(640px) {
+                font-size: rem-calc(16);
+                line-height: rem-calc(20);
+              }
+              @include breakpoint(920px) {
+                font-size: rem-calc(20);
+                line-height: rem-calc(24);
+              }
+              p {
+                margin: 0;
+                color: var(--green);
+                font-weight: bold;
+              }
+              :nth-child(2) {
+                justify-self: right;
+              }
+            }
+          }
+          &__button {
+            margin: 0 rem-calc(15);
+            text-align: right;
+            position: relative;
+            z-index: 10;
+
+            button {
+              padding: rem-calc(15);
+              margin-top: rem-calc(15);
+              background: var(--orange);
+              color: #fff;
+              border-radius: rem-calc(4);
+              font-size: rem-calc(12);
+              font-weight: bold;
+              @include breakpoint(640px) {
+                font-size: rem-calc(18);
+                line-height: rem-calc(24);
+              }
+              @include breakpoint(920px) {
+                font-size: rem-calc(24);
+                line-height: rem-calc(29);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer-top {
+    top: rem-calc(20);
+    position: relative;
+    background: var(--footer);
+    width: 100%;
+    margin-top: rem-calc(40);
+    bottom: 0;
+    font-size: rem-calc(12);
+    border-top-left-radius: rem-calc(40);
+    padding: 4em 0 2em;
+    transform: skewY(-1deg);
+    &:before {
+      content: "";
+      width: rem-calc(40);
+      height: rem-calc(40);
+      background: var(--footer);
+      position: absolute;
+      top: rem-calc(-39);
+      right: 0;
+      z-index: -2;
+    }
+    &:after {
+      content: "";
+      width: rem-calc(80);
+      height: rem-calc(80);
+      background: white;
+      top: rem-calc(-80);
+      position: absolute;
+      right: 0;
+      border-radius: 50%;
+    }
+  }
+
+  .footer {
+    color: var(--black);
+    top: 0;
+    position: relative;
+    z-index: 2;
+    background: var(--footer);
+    .wrapper {
+      @include grid-row(12) {
+        .footer__left {
+          padding-top: 0px;
+          padding-bottom: rem-calc(40);
+          text-align: center;
+          font-size: rem-calc(12);
+          @include breakpoint(640px) {
+            font-size: rem-calc(16);
+            line-height: rem-calc(20);
+          }
+          @include breakpoint(920px) {
+            font-size: rem-calc(18);
+            line-height: rem-calc(24);
+          }
+          p {
+            margin-top: rem-calc(15);
+          }
+
+          @include grid-column(12);
+          @include breakpoint(920px) {
+            @include grid-column(6);
+            text-align: left;
+          }
+          img {
+            width: rem-calc(125);
+            margin-top: rem-calc(15);
+            margin-left: rem-calc(5);
+          }
+        }
+        .footer__right {
+          text-align: center;
+          margin: 0;
+          padding: 0;
+          @include grid-column(12);
+          @include breakpoint(920px) {
+            @include grid-column(6);
+            text-align: right;
+          }
+          padding-bottom: rem-calc(40);
+          p {
+            @include breakpoint(920px) {
+              display: inline-block;
+              padding: 15px;
+            }
+
+            margin: 0;
+            a {
+              color: var(--black);
+              font-size: 12px;
+              @include breakpoint(640px) {
+                font-size: rem-calc(16);
+                line-height: rem-calc(20);
+              }
+              @include breakpoint(920px) {
+                font-size: rem-calc(18);
+                line-height: rem-calc(24);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.blue-btn {
+  background: var(--blue);
+  color: #fff;
+}
+.green-btn {
+  background: var(--green-light);
+  color: var(--green);
+}
